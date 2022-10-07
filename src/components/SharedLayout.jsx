@@ -6,7 +6,7 @@ import { Box } from "@chakra-ui/react";
 
 export const SharedLayout = () => {
     return (
-        <Box m="50px auto 50px" p="30px" w="500px" h="100%" boxShadow="0px 4px 24px -1px rgba(0,0,0,0.75)" borderRadius="15px" backgroundColor="bgTable">
+        <Box h="100%">
             <Header />
             <Suspense fallback={<Loader />}>
                 <Outlet />

@@ -11,12 +11,12 @@ export const Filter = ({ text }) => {
         dispatch(setFilter(e.currentTarget.value));
     }
 
-    return <Flex flexDirection="column" alignItems="center">
-        <Box as='h2' color='orange.500' fontSize='lg' fontWeight='bold'>
+    return <Flex flexDirection="column" alignItems="center" w='500px' m='0 auto' p={5}>
+        <Box as='h2' color='cyan.500' fontSize='lg' fontWeight='bold' mb={5}>
             {text}
           </Box>
         <Input placeholder='Find your contact...'
-               focusBorderColor='teal.500'    
+               focusBorderColor='cyan.500'    
             type="text" name="find" onChange={handleChange} /></Flex>
 }
 
