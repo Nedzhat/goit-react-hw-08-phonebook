@@ -1,14 +1,24 @@
 import { Box, Button, FormControl, FormLabel, Input, InputGroup, InputRightElement, Stack } from "@chakra-ui/react";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { register } from "redux/auth/operation";
 
-export const Register = () => {
+const Register = () => {
     const [show, setShow] = useState(false);
-    
     const handleClick = () => setShow(!show);
+
+    const dispatch = useDispatch();
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log('submit');
+        const name = e.target.name.value;
+        const email = e.target.email.value;
+        const password = e.target.password.value;
+        dispatch(register({
+            name,
+            email,
+            password,
+        }))
         e.target.reset();
     }
 
@@ -44,3 +54,5 @@ export const Register = () => {
         </Box>
     )
 };
+
+export default Register;

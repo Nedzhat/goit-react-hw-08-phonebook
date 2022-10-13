@@ -1,14 +1,23 @@
 import { Box, Button, FormControl, FormLabel, Input, InputGroup, InputRightElement, Stack } from "@chakra-ui/react";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { logIn } from "redux/auth/operation";
 
-export const Login = () => {
+const Login = () => {
     const [show, setShow] = useState(false);
     
     const handleClick = () => setShow(!show);
 
+    const dispatch = useDispatch();
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log('submit');
+        const email = e.target.email.value;
+        const password = e.target.password.value;
+        dispatch(logIn({
+            email,
+            password,
+        }))
         e.target.reset();
     }
 
@@ -17,8 +26,8 @@ export const Login = () => {
             <form onSubmit={handleSubmit}>
                 <FormControl isRequired>
                     <Stack spacing='10px' mb='20px'>
-                        <FormLabel>Username</FormLabel>
-                        <Input name="name" id='124115153' focusBorderColor='cyan.500' placeholder='Username' />
+                        <FormLabel>Email</FormLabel>
+                        <Input type="email" name="email" id='124115153' focusBorderColor='cyan.500' placeholder='Email' />
                         <FormLabel>Password</FormLabel>
                         <InputGroup size='md'>
                             <Input
@@ -42,3 +51,5 @@ export const Login = () => {
         </Box>
     )
 };
+
+export default Login;

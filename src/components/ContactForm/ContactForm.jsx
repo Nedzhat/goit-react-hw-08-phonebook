@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { addContact } from 'redux/operation';
+import { addContact } from 'redux/contacts/operation';
 
 import { Formik, Form } from 'formik';
 import * as yup from 'yup';

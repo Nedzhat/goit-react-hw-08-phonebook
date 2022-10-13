@@ -1,7 +1,7 @@
 import { NotAllowedIcon } from "@chakra-ui/icons";
 import { Box, Heading } from "@chakra-ui/react";
 
-export const NotFound = () => {
+const NotFound = () => {
     return (
         <Box as='main' w='1200px' m='0 auto' p={20}>
                 <Heading as='h2' size='4xl' textAlign='center' color='cyan.500'>404</Heading>
@@ -12,3 +12,5 @@ export const NotFound = () => {
         </Box>
     );
 };
+
+export default NotFound;

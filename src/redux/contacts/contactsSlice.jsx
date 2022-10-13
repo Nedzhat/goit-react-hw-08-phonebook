@@ -29,14 +29,14 @@ const contactsSlice = createSlice({
         [addContact.fulfilled](state, action) {
             state.isLoading = false;
             state.error = null;
-            state.items.unshift(action.payload);
+            state.items.push(action.payload);
         },
         [addContact.rejected]: handleRejected,
         [deleteContact.pending]: handlePending,
         [deleteContact.fulfilled](state, action) {
             state.isLoading = false;
             state.error = null;
-            const idx = state.items.findIndex(contact => contact.id === action.payload.id);
+            const idx = state.items.findIndex(contact => contact.id === action.meta.arg);
             state.items.splice(idx, 1);
         },
         [deleteContact.rejected]: handleRejected,

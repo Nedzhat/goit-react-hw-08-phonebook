@@ -1,19 +1,26 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
 import { Box, Heading } from "@chakra-ui/react";
 
-import { selectContacts, selectError, selectIsLoading, selectVisibleContacts } from "redux/selectors";
+import { selectContacts, selectError, selectIsLoading, selectVisibleContacts } from "redux/contacts/selectors";
 import { ContactForm } from "components/ContactForm/ContactForm";
 import { ContactList } from "components/ContactList/ContactList";
 import { Filter } from "components/Filter/Filter";
 import { Loader } from "components/Loader/Loader";
 import { Plug } from "components/Plug/Plug";
+import { fetchContacts } from "redux/contacts/operation";
 
-export const Contacts = () => {
+const Contacts = () => {
+    const dispatch = useDispatch();
     const contacts = useSelector(selectContacts);
     const contactsFilter = useSelector(selectVisibleContacts);
     const isLoading = useSelector(selectIsLoading);
     const error = useSelector(selectError);
     
+    useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
+
     return (
         <Box w='1200px' m='0 auto'>
             <Heading as='h2' size='3xl' textAlign='center' m='20px' color='cyan.500' style={{ textTransform: "uppercase" }}>Phonebook</Heading>
@@ -25,3 +32,5 @@ export const Contacts = () => {
         </Box>
     )
 };
+
+export default Contacts;

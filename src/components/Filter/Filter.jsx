@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { setFilter } from 'redux/filterSlice';
+import { setFilter } from 'redux/contacts/filterSlice';
 import PropTypes from 'prop-types';
 
 import { Flex, Input, Box } from '@chakra-ui/react'
