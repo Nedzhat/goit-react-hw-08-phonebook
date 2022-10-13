@@ -6,6 +6,7 @@ import { refreshUser } from 'redux/auth/operation';
 import { RestrictedRoute } from './RestrictedRoute';
 import { SharedLayout } from './SharedLayout';
 import { PrivateRoute } from './PrivateRoute';
+import { Loader } from './Loader/Loader';
 
 const Home = lazy(() => import('../pages/Home/Home'));
 const Register = lazy(() => import('../pages/Register/Register'));
@@ -22,7 +23,7 @@ export const App = () => {
   }, [dispatch]);
     
   return isRefreshing ? (
-    <b>Refreshing user...</b>
+    <Loader/>
   ) : (
     <Routes>
       <Route path="/" element={<SharedLayout />}>
